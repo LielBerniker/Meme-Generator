@@ -1,0 +1,28 @@
+/* poppins */
+@font-face {
+    font-family: poppins-regular;
+    src: url(../../fonts/Poppins/Poppins-Regular.ttf)
+}
+
+@font-face {
+    font-family: poppins-bold;
+    src: url(../../fonts/Poppins/Poppins-Bold.ttf)
+}
+
+@font-face {
+    font-family: poppins-semi-bold;
+    src: url(../../fonts/Poppins/Poppins-SemiBold.ttf)
+}
+
+@font-face {
+    font-family: dyna;
+    src: url(../../fonts/dynaPuff/DynaPuff-VariableFont_wdth\,wght.ttf)
+}
+
+/* awesome */
+@font-face {
+    font-family: fa;
+    src: url("../../fonts/fontAwesome/fa-brands-400.ttf");
+}
+
+

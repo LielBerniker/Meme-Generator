@@ -1,0 +1,24 @@
+/* SETUP */
+@import 'setup/typography.css';
+@import 'setup/vars.css';
+
+/* BASE */
+
+@import 'basic/base.css';
+@import 'basic/helpers.css';
+@import 'basic/layout.css';
+
+
+/* COMPONENTS */
+
+@import 'components/main-header.css';
+@import 'components/filter.css';
+@import 'components/editor.css';
+@import 'components/gallery.css';
+
+
+/* MEDIA QUERY */
+@import 'mq/media-query.css'
+
+
+

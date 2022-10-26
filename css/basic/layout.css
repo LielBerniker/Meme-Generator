@@ -1,0 +1,12 @@
+/* LAYOUT */
+
+.main-layout {
+    margin-inline-end: 1.6rem;
+    margin-inline-start: 1.6rem;
+}
+
+.main-content {
+    padding: 30px;
+    margin: auto;
+}
+

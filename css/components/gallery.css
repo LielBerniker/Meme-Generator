@@ -1,0 +1,36 @@
+/* GALLERY */
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    /* transition: 0.4s; */
+}
+
+.gallery-container .img-container {
+    margin: 0 auto;
+}
+
+.filters-container .flexible-btn  {
+    cursor: pointer;
+    width: 5.5rem;
+    height: 2.25rem;
+    box-shadow: 0 3px 6px 1px rgb(0 0 0 / 15%);
+    color: var(--clr1);
+    border-radius: 18px;
+    border: none;
+    margin: 5px;
+    padding: 1px;
+    font-size: 1rem;
+    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    transition: box-shadow .1s;
+}
+
+
+
+.filters-container .flexible-btn:hover{
+    box-shadow: -4px -5px 17px 4px #bac6d7ad;
+
+}

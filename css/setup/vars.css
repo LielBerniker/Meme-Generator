@@ -1,0 +1,16 @@
+
+/* text colors */
+:root {
+    --clr1: #ffffff;
+    --clr2: #fefefe;
+    --clr3: linear-gradient(-84deg, #33be6d 0%, #0c98b9 90%);
+    --clr4: #22252c;
+    --clr5: #383b42;
+    --clr6: #21ac91;
+    
+    /* MQ variables */
+
+    --large: 1100px;
+    --medium: 850px;
+    --small: 600px;
+}

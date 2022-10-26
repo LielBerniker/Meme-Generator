@@ -1,0 +1,90 @@
+/* EDIT */
+
+.edited-meme .edit-meme-canvas {
+    border-radius: 20px;
+}
+
+
+.edit-container {
+    display: none;
+    justify-content: space-around;
+}
+
+.edited-meme {
+    border-radius: 20px;
+    background-color: #ebeef311;
+    margin-bottom: auto;
+}
+
+.editing-features {
+    width: 440px;
+    border-radius: 30px;
+    background-color: #ebeef312;
+    padding: 10px;
+}
+
+.editing-features .meme-text-input {
+    box-shadow: 1px 2px 0 #bbc4d1, inset 0 2px 0 #ffffff;
+    border-radius: 28px;
+    background-color: #ebeef3;
+    text-align: center;
+    width: 90%;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 3.5rem;
+    font-size: 1.5rem;
+}
+
+.editing-features .line-change-btns {
+    text-align: center;
+    margin: 15px auto;
+}
+
+
+.line-switch.btn {
+    box-shadow: 1px 5px 0 #048b97, inset 0 2px 0 rgba(255, 255, 255, 0.58);
+    background-image: linear-gradient(-38deg, #66c4dc 0%, #40b1ce 50%, #0c98bb 100%);
+}
+
+.line-add.btn {
+    box-shadow: 1px 5px 0 #015d33, inset 0 2px 0 rgba(255, 255, 255, 0.58);
+    background-image: linear-gradient(#42eb5c 0%, #37b34a 100%);
+}
+
+.line-delete.btn {
+    box-shadow: 1px 5px 0 #8c0606, inset 0 2px 0 rgba(255, 255, 255, 0.58);
+    background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+}
+
+.line-change-btns .btn {
+    margin: 2px 2px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    width: 3.3rem;
+    height: 3.3rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.updates-btns .btn {
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin: 0 7px;
+    text-align: center;
+}
+
+.editing-features .updates-btns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 40px));
+    gap: 15px;
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    background-color: #19a59f;
+    border-radius: 15px;
+}
