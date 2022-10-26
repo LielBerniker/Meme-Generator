@@ -1,5 +1,6 @@
 'use strict'
-
+const memeNumber = 18
+var gCurrImgMeme = null
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gElCanvas
 var gCtx
@@ -12,18 +13,49 @@ var gImgsAfterFilter
 
 
 function onInit() {
+ 
+
   gElCanvas = document.querySelector('.edit-meme-canvas')
   gCtx = gElCanvas.getContext('2d')
-  restartCanvasLocations()
-  renderGallery()
-  
-  
-  var memes = loadFromStorage(STORAGE_KEY)
-  if (memes) gSavedMemes = memes
-  // addListeners()
-  // resizeCanvas()
-}
+  if(gCurrImgMeme !== null)
+  {
+    document.querySelector('section[class = "edit-container flex"]').style.display = 'flex'
+    document.querySelector(".gallery-container").style.display = 'none'
+    document.querySelector("input").style.display = 'none';
+    document.querySelector('section[class = "filters-container flex"]').style.display = 'none';
+    renderMeme(gCurrImgMeme)
+  }
+  else{
+    document.querySelector('section[class = "edit-container flex"]').style.display = 'none'
+    document.querySelector(".gallery-container").style.display = 'compact'
+    document.querySelector("input").style.display = 'compact';
+    document.querySelector('section[class = "filters-container flex"]').style.display = 'compact';
+    // restartCanvasLocations()
+    renderGallery() 
+    // var memes = loadFromStorage(STORAGE_KEY)
+    // if (memes) gSavedMemes = memes
+    // addListeners()
+    // resizeCanvas()
+  }
 
+}
+function renderGallery()
+{
+  let elContainer = document.querySelector(".gallery-container")
+  for (let i = 1; i <= memeNumber; i++) {
+    var strName = `img/meme-imgs/${i}.jpg`
+    var elCurrImg = document.createElement("img")
+    elCurrImg.src = strName
+    elCurrImg.id = `meme-imgs/${i}`
+    elCurrImg.addEventListener('click', function () {
+        gCurrImgMeme = this.id
+        onInit()
+    });
+    elCurrImg.className = "meme-img-select"
+    elContainer.appendChild(elCurrImg)
+
+  }
+}
 function toggleMenu() {
   document.body.classList.toggle('menu-opened')
 }

@@ -1,8 +1,8 @@
-function renderMeme() {
-    gCurrMeme = getgMeme()
-  
+function renderMeme(imgId) {
+
+    var imgSource = `img/${imgId}.jpg`
     const img = new Image()
-    img.src = `img/meme-imgs/${gCurrMeme.selectedImgId + 1}.jpg`
+    img.src = imgSource
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
   
@@ -24,3 +24,4 @@ function renderMeme() {
     gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
     gCtx.closePath()
   }
+

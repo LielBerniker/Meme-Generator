@@ -1,0 +1,9 @@
+.meme-img-select{
+    height:95% ;
+    width: 95%;
+
+}
+.meme-img-select:hover{
+    box-shadow: -4px -5px 17px 4px #0ad414ad;
+    cursor: pointer;
+}
