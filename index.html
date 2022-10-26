@@ -20,7 +20,7 @@
         <nav>
             <ul class="main-nav clean-list flex">
                 <li onclick="onGalleryShow()">Gallery</li>
-                <li onclick="onRenderSavedMemes()">Memes</li>
+                <li class="saved-meme-page" >Memes</li>
                 <li onclick="onReplaceSiteToLinkedin()">About</li>
             </ul>
         </nav>
@@ -86,7 +86,7 @@
                         src="img/icons/arrows-up.png" /></button>
                     <button class="text-move-down btn" onclick="onMoveTextX(5)"> <img class="icon"
                         src="img/icons/arrows-down.png" /></button>
-                    <select class="font-type btn" onclick="onChangeFontFamily(this)">
+                    <select class="font-type btn" onclick="onChangeFontFamily(this.value)">
                         <option value="Impact">Impact</option>
                         <option value="Arial">Arial</option>
                         <option value="David">David</option>
@@ -118,9 +118,9 @@
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/utils.js"></script>
     <script src="js/controllers/main.controller.js"></script>
-    <script src="js/controllers/editor.js"></script>
+    <!-- <script src="js/controllers/editor.js"></script> -->
     <script src="js/services/upload.service.js"></script>
-    <script src="js/services/editor.service.js"></script>
+    <!-- <script src="js/services/editor.service.js"></script> -->
     <!-- <script src="js/controllers/gallery.controller.js"></script> -->
     <script src="js/controllers/meme.controller.js"></script>
 

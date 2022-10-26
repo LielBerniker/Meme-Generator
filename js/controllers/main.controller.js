@@ -2,6 +2,8 @@
 const memeNumber = 18
 var gCurrImgMeme = null
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+var gSavedMemes = []
+var isMemePage = false
 var gElCanvas
 var gElLeft
 var gElTop 
@@ -18,14 +20,25 @@ function onInit() {
  
 
   gElCanvas = document.querySelector('.edit-meme-canvas')
-  gElCanvas.addEventListener('mousedown', function(e) {
+  var memeBtn = document.querySelector("li[class='saved-meme-page']")
+  gElCanvas.addEventListener('click', function(e) {
     getCursorPosition(gElCanvas, e)
-})
-  gElLeft =gElCanvas.offsetLeft + gElCanvas.clientLeft,
-  gElTop =gElCanvas.offsetTop + gElCanvas.clientTop,
+}),
+memeBtn.addEventListener('mousedown', function(e) {
+  isMemePage = true
+  onInit()
+}),
   gCtx = gElCanvas.getContext('2d')
   initGMeme()
-  if(gCurrImgMeme !== null)
+  if(isMemePage)
+  {
+    document.querySelector('section[class = "edit-container flex"]').style.display = 'none'
+    document.querySelector(".gallery-container").style.display = 'compact'
+    document.querySelector("input").style.display = 'compact';
+    document.querySelector('section[class = "filters-container flex"]').style.display = 'compact';
+    renderMemes()
+  }
+  else if(gCurrImgMeme !== null)
   {
     document.querySelector('section[class = "edit-container flex"]').style.display = 'flex'
     document.querySelector(".gallery-container").style.display = 'none'
@@ -63,6 +76,22 @@ function renderGallery()
     elContainer.appendChild(elCurrImg)
 
   }
+}
+function renderMemes()
+{
+  let elContainer = document.querySelector(".gallery-container")
+  var allSaveImg = loadFromStorage(ALL_MEMES)
+  if(allSaveImg !== null)
+  {
+  for(let currImg of allSaveImg)
+  {
+  
+    var elCurrImg = document.createElement("img")
+    elCurrImg.src = "data:image/png;base64," + currImg;
+    elCurrImg.className = "meme-img-select"
+    elContainer.appendChild(elCurrImg)
+  }
+}
 }
 function toggleMenu() {
   document.body.classList.toggle('menu-opened')
@@ -158,11 +187,40 @@ function onDeleteLine()
   DeleteLine(gCurrImgMeme)
 
 }
+
 function onChangeColor(val)
 {
   onSelectFillColor(val,gCurrImgMeme)
 }
+
 function onSetLineText(event)
 {
   setMemeText(event.value,gCurrImgMeme)
 }
+
+function onMoveText(direction)
+{
+  moveText(direction,gCurrImgMeme)
+}
+
+function onChangeFontFamily(val)
+{
+  changeFontFamily(val,gCurrImgMeme)
+}
+
+function onChangeFontSize(val)
+{
+   changeFontSize(val,gCurrImgMeme)
+}
+
+function onGalleryShow()
+{
+  location.reload();
+}
+
+function onSaveMeme()
+{
+  saveMemes()
+}
+
+

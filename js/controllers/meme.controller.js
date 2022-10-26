@@ -1,4 +1,6 @@
 let gMeme
+const ALL_MEMES = "ALL_MEMES"
+
 function initGMeme(){
   gMeme = {
     selectedImgId: 1,
@@ -90,6 +92,7 @@ function renderMeme(imgId) {
 
 
   function isLineClicked(clickedPos) {
+    
     const oldIdx = gMeme.selectedLineIdx
     let selectedLine
     selectedLine = gMeme.lines.findIndex(line => {
@@ -111,7 +114,7 @@ function renderMeme(imgId) {
       }
         gMeme.selectedLineIdx = selectedLine
         gMeme.lines[selectedLine].isSelected = true
-       
+        document.querySelector("input[class='meme-text-input'").value = gMeme.lines[selectedLine].txt
     }
 }
 function  DeleteLine(imgId)
@@ -144,4 +147,63 @@ function setMemeText(val,imgId)
   renderMeme(imgId)
 }
 
+function moveText(direction,imgId)
+{
+  var curIndex =gMeme.selectedLineIdx
+  if(curIndex !==-1){
+    switch (direction) {
+      case 'right':
+        gMeme.lines[curIndex].align = 'end'
+        break;
+      case 'center':
+        gMeme.lines[curIndex].align = 'center'
+        break;      
+      case 'left':
+        gMeme.lines[curIndex].align = 'start'
+        break;
+      default:
+        break;
+    }
+  }
+  renderMeme(imgId)
+}
+
+function changeFontFamily(font,imgId){
+
+ var curIndex =gMeme.selectedLineIdx
+  if(curIndex !==-1){
+  gMeme.lines[curIndex].fontfamily = font.toLowerCase()
+  }
+  renderMeme(imgId)
+}
+
+function changeFontSize(val,imgId)
+{
+  var curIndex =gMeme.selectedLineIdx
+  if(curIndex !==-1){
+
+    if(gMeme.lines[curIndex].size + val >8 && gMeme.lines[curIndex].size + val < 80)
+    {
+      gMeme.lines[curIndex].size += val 
+    }
+  }
+  renderMeme(imgId)
+}
+ function saveMemes()
+ {
+ var curImgData = getBase64Image();
+ var allSaveImg = loadFromStorage(ALL_MEMES)
+   if(allSaveImg === null)
+     {
+      allSaveImg = []
+     }
+      allSaveImg.push(curImgData)
+      saveToStorage(ALL_MEMES,allSaveImg)
+ }
+
+function getBase64Image() {
+  var dataURL = gElCanvas.toDataURL("image/png");
+
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
 
