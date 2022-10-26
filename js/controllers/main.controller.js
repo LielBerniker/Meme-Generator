@@ -3,6 +3,8 @@ const memeNumber = 18
 var gCurrImgMeme = null
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gElCanvas
+var gElLeft
+var gElTop 
 var gCtx
 var gPos
 var gCanvasTop, gCanvasDown, gCanvasMiddle
@@ -16,7 +18,13 @@ function onInit() {
  
 
   gElCanvas = document.querySelector('.edit-meme-canvas')
+  gElCanvas.addEventListener('mousedown', function(e) {
+    getCursorPosition(gElCanvas, e)
+})
+  gElLeft =gElCanvas.offsetLeft + gElCanvas.clientLeft,
+  gElTop =gElCanvas.offsetTop + gElCanvas.clientTop,
   gCtx = gElCanvas.getContext('2d')
+  initGMeme()
   if(gCurrImgMeme !== null)
   {
     document.querySelector('section[class = "edit-container flex"]').style.display = 'flex'
@@ -131,4 +139,30 @@ function onReplaceSiteToGithub() {
   window.open("https://github.com/saarf77",
     "_blank")
 }
+function onAddLine()
+{
+  addLine(gCurrImgMeme)
+}
 
+function getCursorPosition(canvas, event) {
+  const rect = canvas.getBoundingClientRect()
+  const x = event.clientX - rect.left
+  const y = event.clientY - rect.top
+  // console.log("x: " + x + " y: " + y)
+ isLineClicked({x:x,y:y})
+
+}
+
+function onDeleteLine()
+{
+  DeleteLine(gCurrImgMeme)
+
+}
+function onChangeColor(val)
+{
+  onSelectFillColor(val,gCurrImgMeme)
+}
+function onSetLineText(event)
+{
+  setMemeText(event.value,gCurrImgMeme)
+}

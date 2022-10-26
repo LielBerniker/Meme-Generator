@@ -46,7 +46,7 @@
                 <button class="actor" value="actor" onclick="onIncreaseFontSizeAndFilter(this)" >Actor</button>
                 <button class="cute" value="cute" onclick="onIncreaseFontSizeAndFilter(this)" >Cute</button>
             </div>
-            <button class="flexible-btn">I'm flexible</button>
+            <button class="flexible-btn" >I'm flexible</button>
             <!-- <button class="flexible-btn" onclick="onRandomMeme()">I'm flexible</button> -->
             <button class="more-btn" onclick="onReplaceSiteToGithub()">More</button>
         </section>
@@ -93,10 +93,10 @@
                     </select>
                     <button class="font-clr-change btn" onclick="document.querySelector('.fill-color').click()">
                         <input class="fill-color hide-element" type="color" name="font-clr-change" value="#f33f33"
-                        onchange="onChangeColor(this)" /> <img class="icon"
+                        oninput="onChangeColor(this.value)" /> <img class="icon"
                         src="img/icons/paint-board-and-brush.png" />
                 </div>
-
+              
                 <div class="clouds-btns flex">
                     <button class="download-btn btn"><a href="#" onclick="downloadCanvas(this)"
                         download="cool-meme">Download</a></button>
@@ -118,7 +118,9 @@
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/utils.js"></script>
     <script src="js/controllers/main.controller.js"></script>
+    <script src="js/controllers/editor.js"></script>
     <script src="js/services/upload.service.js"></script>
+    <script src="js/services/editor.service.js"></script>
     <!-- <script src="js/controllers/gallery.controller.js"></script> -->
     <script src="js/controllers/meme.controller.js"></script>
 
