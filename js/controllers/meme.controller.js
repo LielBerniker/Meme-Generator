@@ -234,7 +234,25 @@ function getImage() {
   }
   renderMeme(imgId)
  }
-// function markLine(line) {
+
+function shareAll()
+{
+  console.log(gElCanvas.toDataURL())
+  const shareData = {
+    title: 'MDN',
+    text: 'Learn web development on MDN!',
+    url: gElCanvas.toDataURL("image/png")
+  }
+  try {
+     navigator.share(shareData)
+  } catch (err) {
+   console.log(err)
+  }
+}
+
+
+
+  // function markLine(line) {
 //   if (!line) return
 //   const lineWidth = gCtx.measureText(line.txt).width + line.size
 //   const lineHeight = line.size + 20

@@ -33,8 +33,8 @@
         <section class="filters-container flex">
             <div class="search-keyword-container flex space-between">
                 <datalist id="search-list"></datalist>
-                <input class="search-input" list="search-list" type="text" onkeyup="onKeywordList(this)"
-                    onchange="onSetFilterByKeyword(this)" placeholder="Search">
+                <input class="search-input" list="search-list" type="text" 
+                oninput="onSetFilterByKeyword(this)" placeholder="Search">
                 <div class="img-search"><img class="icon icon-search" src="img/icons/search-icon.png"> </div>
             </div>
 
@@ -43,10 +43,10 @@
                 <button class="funny" value="funny" onclick="onIncreaseFontSizeAndFilter(this)" >Funny</button>
                 <button class="animal" value="animal" onclick="onIncreaseFontSizeAndFilter(this)" >Animal</button>
                 <button class="men" value="men" onclick="onIncreaseFontSizeAndFilter(this)" >Men</button>
-                <button class="actor" value="actor" onclick="onIncreaseFontSizeAndFilter(this)" >Actor</button>
+                <button class="actor" value="Celeb" onclick="onIncreaseFontSizeAndFilter(this)" >Celeb</button>
                 <button class="cute" value="cute" onclick="onIncreaseFontSizeAndFilter(this)" >Cute</button>
             </div>
-            <button class="flexible-btn" >I'm flexible</button>
+            <button class="flexible-btn" onclick="onFlexible()" >I'm flexible</button>
             <!-- <button class="flexible-btn" onclick="onRandomMeme()">I'm flexible</button> -->
             <button class="more-btn" onclick="onReplaceSiteToGithub()">More</button>
         </section>
@@ -108,6 +108,7 @@
                         download="cool-meme">Share</a></button>
                     <button class="save-btn btn" onclick="onSaveMeme()">Save</button>
                     <button class="delete-btn btn" onclick="onDeleteMeme()">Delete</button>
+                    <button class="share-btn btn" onclick="onShareAll()">Share</button>
                 </div>
             </div>
         </section>
@@ -117,16 +118,12 @@
         <div class="logo"></div>
     </footer>
 
-    <!-- <script src="js/services/meme.service.js"></script> -->
-    <!-- <script src="js/services/galley.service.js"></script> -->
+  
     <script src="js/services/storage.service.js"></script>
-    <script src="js/services/utils.js"></script>
     <script src="js/controllers/main.controller.js"></script>
-    <!-- <script src="js/controllers/editor.js"></script> -->
     <script src="js/services/upload.service.js"></script>
-    <!-- <script src="js/services/editor.service.js"></script> -->
-    <!-- <script src="js/controllers/gallery.controller.js"></script> -->
     <script src="js/controllers/meme.controller.js"></script>
+    <script src="js/services/meme.service.js"></script>
 
 </body>
 

@@ -62,6 +62,8 @@ function renderGallery()
 {
   let elContainer = document.querySelector(".gallery-container")
   for (let i = 1; i <= memeNumber; i++) {
+    if(conatinStr(gFilterBy,i-1))
+    {
     var strName = `img/meme-imgs/${i}.jpg`
     var elCurrImg = document.createElement("img")
     elCurrImg.src = strName
@@ -72,7 +74,7 @@ function renderGallery()
     });
     elCurrImg.className = "meme-img-select"
     elContainer.appendChild(elCurrImg)
-
+  }
   }
 }
 function renderMemes()
@@ -250,6 +252,38 @@ function onMoveTextY(move)
 {
   moveTextY(move,gCurrImgMeme)
 }
+ 
+function onFlexible()
+{
+  var randNum = Math.floor(Math.random() * memeNumber);
+  gCurrImgMeme = `meme-imgs/${randNum}`
+  onInit()
+}
 
+function onSetFilterByKeyword(event)
+{
+  gFilterBy = event.value
+  onInit()
+}
+
+function conatinStr(str,i){
+for(let currDes of gImgs[i].keywords)
+{
+  if(currDes.includes(str))
+  {
+    return true
+  }
+}
+return false
+}
+function onIncreaseFontSizeAndFilter(event)
+{
+  gFilterBy = event.innerHTML.toLowerCase()
+  onInit()
+}
+ function onShareAll()
+ {
+  // shareAll()
+ }
 
 
