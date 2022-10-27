@@ -4,7 +4,7 @@ const ALL_MEMES = "ALL_MEMES"
 function initGMeme(){
   gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: 0,
+    selectedLineIdx: -1,
     lines: [
       {
         pos: {
@@ -115,6 +115,8 @@ function renderMeme(imgId) {
         gMeme.selectedLineIdx = selectedLine
         gMeme.lines[selectedLine].isSelected = true
         document.querySelector("input[class='meme-text-input'").value = gMeme.lines[selectedLine].txt
+        // markLine(gMeme.lines[selectedLine])
+       
     }
 }
 function  DeleteLine(imgId)
@@ -191,6 +193,7 @@ function changeFontSize(val,imgId)
 }
  function saveMemes()
  {
+  
  var curImgData = getImage();
  var allSaveImg = loadFromStorage(ALL_MEMES)
    if(allSaveImg === null)
@@ -206,17 +209,43 @@ function getImage() {
 
   return dataURL
 }
+ function  moveTextX(move,imgId)
+ {
+  var curIndex =gMeme.selectedLineIdx
+  if(curIndex !==-1){
 
-function markLine(line) {
-  if (!line) return
-  const lineWidth = gCtx.measureText(line.txt).width + line.size
-  const lineHeight = line.size + 20
-  gCtx.strokeStyle = 'yellow'
-  gCtx.strokeRect(
-    line.pos.x - lineWidth / 2 - 10,
-    line.pos.y - lineHeight / 2,
-    lineWidth + 20,
-    lineHeight
-  )
-}
+    if(gMeme.lines[curIndex].pos.y + move >30 && gMeme.lines[curIndex].pos.y + move < 495)
+    {
+      gMeme.lines[curIndex].pos.y += move
+    }
+  }
+  renderMeme(imgId)
+ }
+
+ function  moveTextY(move,imgId)
+ {
+  var curIndex =gMeme.selectedLineIdx
+  if(curIndex !==-1){
+
+    if(gMeme.lines[curIndex].pos.x + move >45 && gMeme.lines[curIndex].pos.x + move < 470)
+    {
+      gMeme.lines[curIndex].pos.x += move
+    }
+  }
+  renderMeme(imgId)
+ }
+// function markLine(line) {
+//   if (!line) return
+//   const lineWidth = gCtx.measureText(line.txt).width + line.size
+//   const lineHeight = line.size + 20
+//   gCtx.strokeStyle = 'yellow'
+//   gCtx.strokeRect(
+//     line.pos.x - lineWidth / 2 - 10,
+//     line.pos.y - lineHeight / 2,
+//     lineWidth + 20,
+//     lineHeight
+//   )
+// }
+
+
 

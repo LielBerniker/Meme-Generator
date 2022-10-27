@@ -87,6 +87,17 @@ function renderMemes()
     var elCurrImg = document.createElement("img")
     elCurrImg.src = currImg;
     elCurrImg.className = "meme-img-select"
+    elCurrImg.addEventListener('click',function(event)
+    {
+      var a1 = document.createElement("a")
+      // const urlCreator = window.URL 
+      // imageData = urlCreator.createObjectURL(this.data);
+      a1.setAttribute("href",event.target.src);
+      a1.setAttribute("download", "imgMeme.jpg");
+      document.body.appendChild(a1);
+      a1.click();
+      a1.remove()
+    })
     elContainer.appendChild(elCurrImg)
   }
 }
@@ -172,10 +183,11 @@ function onAddLine()
 }
 
 function getCursorPosition(canvas, event) {
+
   const rect = canvas.getBoundingClientRect()
   const x = event.clientX - rect.left
   const y = event.clientY - rect.top
-  // console.log("x: " + x + " y: " + y)
+ 
  isLineClicked({x:x,y:y})
 
 }
@@ -218,6 +230,7 @@ function onGalleryShow()
 
 function onSaveMeme()
 {
+  
   saveMemes()
 }
 
@@ -227,5 +240,16 @@ function onMemeShow()
   isMemePage = true
   onInit()
 }
+
+function onMoveTextX(move)
+{
+  moveTextX(move,gCurrImgMeme)
+}
+
+function onMoveTextY(move)
+{
+  moveTextY(move,gCurrImgMeme)
+}
+
 
 
