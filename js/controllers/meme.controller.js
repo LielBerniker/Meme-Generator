@@ -14,8 +14,8 @@ function initGMeme(){
         txt: 'Sample text up',
         size: 40,
         align:'center',
-        fillColor:'rgb(0, 0, 0)',
-        strokeColor: 'rgb(0, 0, 0)',
+        fillColor:'white',
+        strokeColor: 'black',
         isSelected: false,
         fontfamily: 'impact',
       },
@@ -27,8 +27,8 @@ function initGMeme(){
         txt: 'Sample text down',
         size: 40,
         align:'center',
-        fillColor: 'rgb(0, 0, 0)',
-        strokeColor: 'rgb(0, 0, 0)',
+        fillColor: 'white',
+        strokeColor: 'black',
         isSelected: false,
         fontfamily: 'impact',
       },
@@ -79,8 +79,8 @@ function renderMeme(imgId) {
       txt: 'Sample text up',
       size: 40,
       align:'center',
-      fillColor: 'rgb(0, 0, 0)',
-      strokeColor: 'rgb(0, 0, 0)',
+      fillColor: 'white',
+      strokeColor: 'black',
       isSelected: false,
       fontfamily: 'impact',
     }
@@ -191,7 +191,7 @@ function changeFontSize(val,imgId)
 }
  function saveMemes()
  {
- var curImgData = getBase64Image();
+ var curImgData = getImage();
  var allSaveImg = loadFromStorage(ALL_MEMES)
    if(allSaveImg === null)
      {
@@ -201,9 +201,22 @@ function changeFontSize(val,imgId)
       saveToStorage(ALL_MEMES,allSaveImg)
  }
 
-function getBase64Image() {
+function getImage() {
   var dataURL = gElCanvas.toDataURL("image/png");
 
-  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  return dataURL
+}
+
+function markLine(line) {
+  if (!line) return
+  const lineWidth = gCtx.measureText(line.txt).width + line.size
+  const lineHeight = line.size + 20
+  gCtx.strokeStyle = 'yellow'
+  gCtx.strokeRect(
+    line.pos.x - lineWidth / 2 - 10,
+    line.pos.y - lineHeight / 2,
+    lineWidth + 20,
+    lineHeight
+  )
 }
 

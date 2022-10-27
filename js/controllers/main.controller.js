@@ -20,37 +20,35 @@ function onInit() {
  
 
   gElCanvas = document.querySelector('.edit-meme-canvas')
-  var memeBtn = document.querySelector("li[class='saved-meme-page']")
   gElCanvas.addEventListener('click', function(e) {
     getCursorPosition(gElCanvas, e)
-}),
-memeBtn.addEventListener('mousedown', function(e) {
-  isMemePage = true
-  onInit()
 }),
   gCtx = gElCanvas.getContext('2d')
   initGMeme()
   if(isMemePage)
   {
-    document.querySelector('section[class = "edit-container flex"]').style.display = 'none'
-    document.querySelector(".gallery-container").style.display = 'compact'
-    document.querySelector("input").style.display = 'compact';
-    document.querySelector('section[class = "filters-container flex"]').style.display = 'compact';
+    console.log("hrll")
+    document.querySelector(".gallery-container").innerHTML = ''
+    document.querySelector('section[class = "edit-container flex"]').style.display ='none';
+    document.querySelector(".gallery-container").style.visibility = 'visible'
+    document.querySelector("input").style.display ='none';
+    document.querySelector('section[class = "filters-container flex"]').style.display ='none';
     renderMemes()
   }
   else if(gCurrImgMeme !== null)
   {
-    document.querySelector('section[class = "edit-container flex"]').style.display = 'flex'
-    document.querySelector(".gallery-container").style.display = 'none'
-    document.querySelector("input").style.display = 'none';
-    document.querySelector('section[class = "filters-container flex"]').style.display = 'none';
+    document.querySelector(".gallery-container").innerHTML = ''
+    document.querySelector('section[class = "edit-container flex"]').style.visibility = 'visible'
+    document.querySelector("input").style.display ='none';
+    document.querySelector('section[class = "filters-container flex"]').style.display ='none';
     renderMeme(gCurrImgMeme)
   }
   else{
-    document.querySelector('section[class = "edit-container flex"]').style.display = 'none'
-    document.querySelector(".gallery-container").style.display = 'compact'
-    document.querySelector("input").style.display = 'compact';
-    document.querySelector('section[class = "filters-container flex"]').style.display = 'compact';
+    document.querySelector(".gallery-container").innerHTML = ''
+    document.querySelector('section[class = "edit-container flex"]').style.visibility = 'hidden'
+    // document.querySelector(".gallery-container").style.display = 'bloack-grid'
+    // document.querySelector("input").style.display = 'bloack-grid';
+    // document.querySelector('section[class = "filters-container flex"]').style.display = 'bloack-grid';
     // restartCanvasLocations()
     renderGallery() 
     // var memes = loadFromStorage(STORAGE_KEY)
@@ -87,7 +85,7 @@ function renderMemes()
   {
   
     var elCurrImg = document.createElement("img")
-    elCurrImg.src = "data:image/png;base64," + currImg;
+    elCurrImg.src = currImg;
     elCurrImg.className = "meme-img-select"
     elContainer.appendChild(elCurrImg)
   }
@@ -221,6 +219,13 @@ function onGalleryShow()
 function onSaveMeme()
 {
   saveMemes()
+}
+
+function onMemeShow()
+{
+  gCurrImgMeme = null
+  isMemePage = true
+  onInit()
 }
 
 
